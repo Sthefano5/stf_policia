@@ -1,0 +1,41 @@
+{% extends "./base.html" %} {% block body %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <h1>Buscar Mantenimientos</h1>
+    <form method="post" class="my-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+    </div>
+{% if mantenimientos %}
+<div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <h2>Resultados:</h2>
+    <div class="table-responsive py-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Descripción</th>
+                    <th>Vehículo</th>
+                    <th>Tipo de mantenimiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mantenimiento in mantenimientos %}
+                    <tr>
+                        <td>{{ mantenimiento.fecha }}</td>
+                        <td>{{ mantenimiento.descripcion }}</td>
+                        <td>{{ mantenimiento.idvehiculo }}</td>
+                        <td>{{ mantenimiento.idtipomantenimiento }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'descargar_mantenimientos' form.fecha_inicio.value form.fecha_fin.value %}" class="btn btn-danger" >Descargar resultados</a>
+    </div>
+</div>
+        {% endif %}
+</div>
+{% endblock %}

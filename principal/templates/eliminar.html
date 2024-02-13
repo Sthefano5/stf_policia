@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+
+{% block title %} Edicion de Campos {% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <h2>Formulario</h2>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <p>esta seguro que desea Eliminar "{{ object }}"?</p>
+      {{ form }}
+      <button type="submit">Eliminar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Persona</title>
+</head>
+<body>
+    <h1>Buscar Persona por Cédula</h1>
+    <form action="" method="get">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula">
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultados %}
+        <h2>Resultados:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cedula</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Ciudad de Nacimiento</th>
+                    <th>Teléfono</th>
+                    <th>Subcircuito</th>  <!-- Nueva columna -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in resultados %}
+                    <tr>
+                        <td>{{ persona.cedula }}</td>
+                        <td>{{ persona.nombres }}</td>
+                        <td>{{ persona.apellidos }}</td>
+                        <td>{{ persona.fecha_nacimiento }}</td>
+                        <td>{{ persona.ciudad_nacimiento }}</td>
+                        <td>{{ persona.telefono }}</td>
+                        <td>{{ persona.idsubCircuito.nombreSubCircuito|default:"" }}</td>  <!-- Mostrar el subcircuito -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'descargar_resultados' %}?cedula={{ resultados.0.cedula }}">Descargar resultados</a>
+    {% endif %}
+</body>
+</html>
