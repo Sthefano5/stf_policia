@@ -26,7 +26,7 @@ urlpatterns = [
    path('buscarmantenimientos/', buscar_mantenimientos, name='buscar_mantenimientos'),
    path('descargar/<fecha_inicio>/<fecha_fin>/', descargar_mantenimientos, name='descargar_mantenimientos'),
    #persona buscar #
-   path('buscar/', views.buscar_persona, name='buscar_persona'),
+   path('buscar_personal/', views.buscar_persona, name='buscar_persona'),
    path('descargar/', views.descargar_resultados, name='descargar_resultados'),
   #buscar vehiculo #
   path('buscar_vehiculo/', buscar_vehiculo, name='buscar_vehiculo'),
