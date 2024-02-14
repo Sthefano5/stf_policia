@@ -2,6 +2,8 @@ from datetime import date
 from django.urls import include, path, register_converter
 from . import views
 from .views import buscar_mantenimientos, descargar_mantenimientos
+from .views import buscar_vehiculo, descargar_resultados_vehiculo
+
 
 urlpatterns = [
     path('login/', views.loginView.as_view(), name='login'),
@@ -26,6 +28,9 @@ urlpatterns = [
    #persona buscar #
    path('buscar/', views.buscar_persona, name='buscar_persona'),
    path('descargar/', views.descargar_resultados, name='descargar_resultados'),
+  #buscar vehiculo #
+  path('buscar_vehiculo/', buscar_vehiculo, name='buscar_vehiculo'),
+  path('descargar/', descargar_resultados_vehiculo, name='descargar_resultados_vehiculo'),
 
 
 

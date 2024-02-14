@@ -213,14 +213,46 @@ def descargar_resultados(request):
     personas = personaModel.objects.filter(cedula=cedula).select_related('idsubCircuito')
 
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="resultados.csv"'
+    response['Content-Disposition'] = 'attachment; filename="Reporte_Persona.csv"'
 
     # Escribir encabezados
-    response.write('Cedula,Nombres,Apellidos,Fecha de Nacimiento,Ciudad de Nacimiento,Telefono,Subcircuito\n')
+    response.write('Cedula,Nombres,Apellidos,Telefono,Subcircuito\n')
 
     # Escribir datos
     for persona in personas:
         subcircuito = persona.idsubCircuito.nombreSubCircuito if persona.idsubCircuito else ""
-        response.write(f'{persona.cedula},{persona.nombres},{persona.apellidos},{persona.fecha_nacimiento},{persona.ciudad_nacimiento},{persona.telefono},{subcircuito}\n')
+        response.write(f'{persona.cedula},{persona.nombres},{persona.apellidos},{persona.telefono},{subcircuito}\n')
+
+    return response
+
+#buscar vehiculo#
+
+def buscar_vehiculo(request):
+    resultados = []
+    if request.method == 'GET' and 'placa' in request.GET:
+        placa = request.GET.get('placa')
+        try:
+            vehiculo = vehiculoModel.objects.get(placa=placa)
+            resultados.append({
+                'placa': vehiculo.placa,
+                'marca': vehiculo.marca,
+                'subcircuito': vehiculo.idsubCircuito.nombreSubCircuito
+            })
+        except vehiculoModel.DoesNotExist:
+            pass  # No se encontró ningún vehículo con la placa especificada
+    return render(request, 'buscar_vehiculo.html', {'resultados': resultados})
+
+def descargar_resultados_vehiculo(request):
+    placa = request.GET.get('placa')
+    vehiculo = vehiculoModel.objects.get(placa=placa)
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="resultados_vehiculo.csv"'
+
+    # Escribir encabezados
+    response.write('Placa,Marca,Subcircuito\n')
+
+    # Escribir datos
+    response.write(f'{vehiculo.placa},{vehiculo.marca},{vehiculo.idsubCircuito.nombreSubCircuito}\n')
 
     return response

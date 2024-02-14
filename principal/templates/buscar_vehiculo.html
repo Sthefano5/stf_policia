@@ -1,0 +1,39 @@
+{% extends "./base.html" %} {% block body %}
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    <h1>Buscar Vehículo por Placa</h1>
+    <form action="" method="get" class="my-4">
+        <label for="placa">Placa:</label>
+        <input type="text" id="placa" name="placa">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+    {% if resultados %}
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h2>Resultados:</h2>
+<div class="table-responsive py-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Marca</th>
+                    <th>Subcircuito</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in resultados %}
+                    <tr>
+                        <td>{{ resultado.placa }}</td>
+                        <td>{{ resultado.marca }}</td>
+                        <td>{{ resultado.subcircuito }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'descargar_resultados_vehiculo' %}?placa={{ resultados.0.placa }}" class="btn btn-danger">Descargar resultados de vehículo</a>
+    </div>
+</div>
+        {% endif %}
+</div>
+
+{%endblock%}
