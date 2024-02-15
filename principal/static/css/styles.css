@@ -1,0 +1,55 @@
+.login-form {
+    background: hsla(0, 0%, 100%, 0.55);
+    backdrop-filter: blur(30px);
+    /* Ajusta el padding, margen y otros estilos para el formulario según sea necesario */
+   
+  }
+  
+  /* Estilos para los campos de entrada */
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%; /* O ajusta el ancho deseado */
+    padding: 5px; /* Ajusta el padding según sea necesario */
+    margin-bottom: 10px; /* Espacio entre los campos de entrada */
+    border: 1px solid #ccc; /* Borde de los campos de entrada */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+  
+  /* Estilos para el botón */
+  .login-form button {
+    width: 50%; /* O ajusta el ancho deseado */
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    border: none; /* Quita el borde del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  }
+  
+  /* Estilos adicionales según sea necesario */
+
+  label {
+    display: inline-block;
+    width: 100px; /* Ancho del label */
+    text-align: left; /* Alineación del texto del label a la derecha */
+    margin-right: 10px; /* Espacio entre el label y el input */
+    font-size: 16px; /* Tamaño de fuente del label */
+    font-family: Arial, sans-serif; /* Fuente elegante y comúnmente legible */
+    
+    line-height: 1.6; /* Altura de línea para una mejor legibilidad */
+    color: #333; /* Color de texto oscuro */
+}
+input{
+    padding: 6px;
+    border: 1px solid #6db6f1;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333; /* Color de texto oscuro */
+}
+body {
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace al hacer scroll */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center center; /* Centra la imagen en el fondo */
+    background-color: rgba(231, 218, 218, 0.2); /* Color de fondo semi-transparente (blanco con opacidad del 20%) */
+}
