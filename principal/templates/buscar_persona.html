@@ -1,44 +1,52 @@
 {% extends "./base.html" %} {% block body %}
-
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-    <h1>Buscar Persona por Cédula</h1>
-    <form action="" method="get" class="my-4">
-        <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" name="cedula">
-        <button type="submit" class="btn btn-primary">Buscar</button>
-    </form>
+        <h1>Buscar Persona por Cédula</h1>
+        <form action="" method="get" class="my-4">
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
     </div>
     {% if resultados %}
-<div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
         <h2>Resultados:</h2>
         <div class="table-responsive py-2">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Cedula</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Teléfono</th>
-                    <th>Subcircuito</th>  <!-- Nueva columna -->
-                </tr>
-            </thead>
-            <tbody>
-                {% for persona in resultados %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Teléfono</th>
+                        <th>Subcircuito</th>
+                        <th>ID del Vehículo</th>
+                        <th>Placa</th>
+                        <th>Marca</th>  <!-- Modificado de "Modelo" a "Marca" -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for persona in resultados %}
                     <tr>
                         <td>{{ persona.cedula }}</td>
                         <td>{{ persona.nombres }}</td>
                         <td>{{ persona.apellidos }}</td>
                         <td>{{ persona.telefono }}</td>
-                        <td>{{ persona.idsubCircuito.nombreSubCircuito|default:"" }}</td>  <!-- Mostrar el subcircuito -->
+                        <td>{{ persona.idsubCircuito.nombreSubCircuito|default:"" }}</td>
+                        {% if persona.vehiculo_asignado %}
+                        <td>{{ persona.vehiculo_asignado.id }}</td>
+                        <td>{{ persona.vehiculo_asignado.placa }}</td>
+                        <td>{{ persona.vehiculo_asignado.marca }}</td>  <!-- Cambiado de "modelo" a "marca" -->
+                        {% else %}
+                        <td colspan="3">No hay vehículo asignado</td>
+                        {% endif %}
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <a href="{% url 'descargar_resultados' %}?cedula={{ resultados.0.cedula }}" class="btn btn-danger" >Descargar resultados</a>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'descargar_resultados' %}?cedula={{ resultados.0.cedula }}" class="btn btn-danger">Descargar resultados</a>
+        </div>
     </div>
+    {% endif %}
 </div>
-        {% endif %}
-</div>
-
 {% endblock %}

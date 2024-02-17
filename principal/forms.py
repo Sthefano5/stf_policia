@@ -13,7 +13,8 @@ class personaForm(forms.ModelForm):
     class Meta:
         model = personaModel
         # Lista de campos que quieres incluir en el formulario
-        fields = ['cedula','nombres', 'apellidos', 'fecha_nacimiento', 'ciudad_nacimiento','telefono', 'telefono', 'idtiposangre', 'idrango', 'idsubCircuito']
+        fields = ['cedula', 'nombres', 'apellidos', 'fecha_nacimiento', 'ciudad_nacimiento', 'telefono', 'telefono',
+                  'idtiposangre', 'idrango', 'idsubCircuito', 'vehiculo_asignado']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

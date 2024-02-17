@@ -100,7 +100,7 @@ class genericoeliminar(DeleteView):
 class personalView(genericocrearlistarview):
     telefono = models.CharField(max_length=15, null=True, blank=True)
     campos = ['id', 'cedula','nombres', 'apellidos', 'fecha_nacimiento', 'ciudad_nacimiento',
-              'telefono', 'telefono', 'idtiposangre', 'idrango', 'idsubCircuito']
+              'telefono', 'telefono', 'idtiposangre', 'idrango', 'idsubCircuito','vehiculo_asignado']
     model = personaModel
     form = personaForm
     TITULO_TABLA = 'PERSONAL POLICIAL'

@@ -15,6 +15,10 @@ class personaModel(models.Model):
     idsubCircuito = models.ForeignKey(
         "SubCircuito", on_delete=models.CASCADE, null=True, blank=True)
 
+    # Agregar campo para el vehículo asignado a la persona
+    vehiculo_asignado = models.ForeignKey(
+        "vehiculoModel", on_delete=models.CASCADE, null=True, blank=True)
+
     def __str__(self) -> str:
         return f"Cédula: {self.cedula} | Nombres: {self.nombres} | Apellidos: {self.apellidos}"
 
@@ -50,6 +54,8 @@ class vehiculoModel(models.Model):
     idtipoVehiculo = models.ForeignKey("tipoVehiculo", on_delete=models.CASCADE)
     idtipoCombustible = models.ForeignKey("tipoCombustible", on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return f'Placa: {self.placa} |  Marca: {self.marca}'
 
 class dependencia(models.Model):
 
