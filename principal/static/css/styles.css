@@ -23,7 +23,7 @@
     border-radius: 5px; /* Bordes redondeados */
     background-color: #007bff; /* Color de fondo del botón */
     color: white; /* Color del texto del botón */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    
   }
   
   /* Estilos adicionales según sea necesario */
@@ -45,11 +45,4 @@ input{
     border-radius: 5px;
     font-size: 16px;
     color: #333; /* Color de texto oscuro */
-}
-body {
-    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace al hacer scroll */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center center; /* Centra la imagen en el fondo */
-    background-color: rgba(231, 218, 218, 0.2); /* Color de fondo semi-transparente (blanco con opacidad del 20%) */
 }
