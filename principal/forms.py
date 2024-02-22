@@ -63,3 +63,15 @@ class BusquedaForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.fields["fecha_inicio"].widget = forms.SelectDateWidget()
         self.fields["fecha_fin"].widget = forms.SelectDateWidget()
+
+
+class SolicitudMovilizacionForm(forms.ModelForm):
+    class Meta:
+        model = Movilizacion
+        fields = ['motivo', 'fecha_salida', 'hora_salida', 'ruta', 'kilometraje_inicio', 'personaModel', 'vehiculoModel', 'ocupantes']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["fecha_salida"].widget = forms.DateInput(attrs={'type': 'date'})
+        self.fields["hora_salida"].widget = forms.TextInput(attrs={'placeholder': 'HH:MM'})
+        

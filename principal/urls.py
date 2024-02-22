@@ -6,6 +6,7 @@ from .views import buscar_vehiculo, descargar_resultados_vehiculo
 
 
 urlpatterns = [
+   ## path('', views.loginView.as_view(), name='login'),
     path('login/', views.loginView.as_view(), name='login'),    
     path('personal/', views.personalView.as_view(), name='personal'),
     path('personal/editar/<int:pk>',views.editarpersonaview.as_view(), name='editarpersona'),
@@ -31,6 +32,13 @@ urlpatterns = [
   #buscar vehiculo #
   path('buscar_vehiculo/', buscar_vehiculo, name='buscar_vehiculo'),
   path('descargar/', descargar_resultados_vehiculo, name='descargar_resultados_vehiculo'),
+  
+  #ejemplo#
+    ##path('solicitud/', views.solicitud, name='solicitud'),
+   ##path('solicitud/', views.solicitud_movilizacion, name='solicitud'),
+   path('solicitud/', views.solicitud_movilizacion, name='solicitud_movilizacion'),
+
+
 
 
 

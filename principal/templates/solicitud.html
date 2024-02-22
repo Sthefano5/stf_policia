@@ -1,0 +1,53 @@
+<!-- solicitud.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y Tabla de Movilización</title>
+</head>
+<body>
+    <h1>Formulario de Movilización</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <hr>
+
+    <h1>Tabla de Movilización</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Motivo</th>
+                <th>Fecha de Salida</th>
+                <th>Hora de Salida</th>
+                <th>Ruta</th>
+                <th>Kilometraje de Inicio</th>
+                <th>Conductor</th>
+                <th>Vehículo</th>
+                <th>Ocupantes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datos %}
+            <tr>
+                <td>{{ dato.motivo }}</td>
+                <td>{{ dato.fecha_salida }}</td>
+                <td>{{ dato.hora_salida }}</td>
+                <td>{{ dato.ruta }}</td>
+                <td>{{ dato.kilometraje_inicio }}</td>
+                <td>{{ dato.personaModel }}</td>
+                <td>{{ dato.vehiculoModel }}</td>
+                <td>{{ dato.ocupantes }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8">No hay datos disponibles</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

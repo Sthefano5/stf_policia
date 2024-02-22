@@ -115,3 +115,17 @@ class mantenimiento(models.Model):
     idvehiculo = models.ForeignKey('vehiculoModel', on_delete=models.CASCADE)
     idtipomantenimiento = models.ForeignKey(tipoMantenimiento, on_delete=models.CASCADE)
     
+#repaso examen #
+
+class Movilizacion(models.Model):
+    motivo = models.TextField(null=True)
+    fecha_salida = models.DateField(null=True)
+    hora_salida = models.CharField(max_length=8, null=True)
+    ruta = models.TextField(null=True)
+    kilometraje_inicio = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    personaModel = models.ForeignKey("personaModel", on_delete=models.CASCADE, null=True)
+    vehiculoModel = models.ForeignKey("vehiculoModel", on_delete=models.CASCADE, null=True)
+    ocupantes = models.TextField(null=True)
+
+    def __str__(self):
+        return f'Movilización - ID: {self.id}, Motivo: {self.motivo}'

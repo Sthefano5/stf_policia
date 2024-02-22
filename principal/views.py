@@ -256,3 +256,17 @@ def descargar_resultados_vehiculo(request):
     response.write(f'{vehiculo.placa},{vehiculo.marca},{vehiculo.idsubCircuito.nombreSubCircuito}\n')
 
     return response
+
+#ejemplop#
+
+def solicitud_movilizacion(request):
+    if request.method == 'POST':
+        form = SolicitudMovilizacionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('solicitud_movilizacion')
+    else:
+        form = SolicitudMovilizacionForm()
+    
+    datos = Movilizacion.objects.all()
+    return render(request, 'solicitud.html', {'form': form, 'datos': datos})
