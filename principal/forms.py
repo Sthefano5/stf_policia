@@ -74,4 +74,11 @@ class SolicitudMovilizacionForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields["fecha_salida"].widget = forms.DateInput(attrs={'type': 'date'})
         self.fields["hora_salida"].widget = forms.TextInput(attrs={'placeholder': 'HH:MM'})
+    
+#por si sale mal 
+
+class ConsumoCombustibleForm(forms.ModelForm):
+    class Meta:
+        model = ConsumoCombustible
+        fields = ['conductor', 'vehiculo', 'gasolinera', 'galones_combustible', 'fecha_hora', 'kilometraje_actual', 'fecha_solicitud']
         

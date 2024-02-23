@@ -270,3 +270,4 @@ def solicitud_movilizacion(request):
     
     datos = Movilizacion.objects.all()
     return render(request, 'solicitud.html', {'form': form, 'datos': datos})
+
