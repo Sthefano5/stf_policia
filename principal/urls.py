@@ -6,7 +6,7 @@ from .views import buscar_vehiculo, descargar_resultados_vehiculo
 
 
 urlpatterns = [
-   ## path('', views.loginView.as_view(), name='login'),
+    path('', views.loginView.as_view(), name='login'),
     path('login/', views.loginView.as_view(), name='login'),    
     path('personal/', views.personalView.as_view(), name='personal'),
     path('personal/editar/<int:pk>',views.editarpersonaview.as_view(), name='editarpersona'),
