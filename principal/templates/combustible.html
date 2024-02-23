@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar Combustible</title>
+</head>
+<body>
+    <h1>Registrar Combustible</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Registros de Combustible</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Conductor</th>
+                <th>Vehículo</th>
+                <th>Solicitante</th>
+                <th>Gasolinera</th>
+                <th>Galones de Combustible</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Kilometraje Actual</th>
+                <th>Fecha de Solicitud</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros_combustible %}
+                <tr>
+                    <td>{{ registro.conductor }}</td>
+                    <td>{{ registro.vehiculo }}</td>
+                    <td>{{ registro.solicitante }}</td>
+                    <td>{{ registro.gasolinera }}</td>
+                    <td>{{ registro.galones_combustible }}</td>
+                    <td>{{ registro.fecha }}</td>
+                    <td>{{ registro.hora }}</td>
+                    <td>{{ registro.kilometraje_actual }}</td>
+                    <td>{{ registro.fecha_solicitud }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

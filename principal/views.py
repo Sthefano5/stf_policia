@@ -259,6 +259,7 @@ def descargar_resultados_vehiculo(request):
 
 #ejemplop#
 
+
 def solicitud_movilizacion(request):
     if request.method == 'POST':
         form = SolicitudMovilizacionForm(request.POST)
@@ -271,3 +272,14 @@ def solicitud_movilizacion(request):
     datos = Movilizacion.objects.all()
     return render(request, 'solicitud.html', {'form': form, 'datos': datos})
 
+def registrar_combustible(request):
+    if request.method == 'POST':
+        form = RegistroCombustibleForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('registrar_combustible')
+    else:
+        form = RegistroCombustibleForm()
+    
+    registros_combustible = RegistroCombustible.objects.all()
+    return render(request, 'combustible.html', {'form': form, 'registros_combustible': registros_combustible})

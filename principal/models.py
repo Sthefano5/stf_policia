@@ -131,14 +131,16 @@ class Movilizacion(models.Model):
         return f'Movilización - ID: {self.id}, Motivo: {self.motivo}'
     
 #intento de orden de combustiblwe
-class ConsumoCombustible(models.Model):
-    conductor = models.ForeignKey(personaModel, on_delete=models.CASCADE)
-    vehiculo = models.ForeignKey(vehiculoModel, on_delete=models.CASCADE)
+class RegistroCombustible(models.Model):
+    conductor = models.ForeignKey(personaModel, on_delete=models.CASCADE, related_name='registros_combustible_conductor')
+    vehiculo = models.ForeignKey(vehiculoModel, on_delete=models.CASCADE, related_name='registros_combustible_vehiculo')
+    solicitante = models.ForeignKey(personaModel, on_delete=models.CASCADE, related_name='registros_combustible_solicitante')
     gasolinera = models.CharField(max_length=100)
     galones_combustible = models.DecimalField(max_digits=10, decimal_places=2)
-    fecha_hora = models.DateTimeField()
+    fecha = models.DateField(null=True)
+    hora = models.CharField(max_length=8, null=True)
     kilometraje_actual = models.DecimalField(max_digits=10, decimal_places=2)
-    fecha_solicitud = models.DateField()
+    fecha_solicitud = models.DateField(null=True)
 
     def __str__(self):
-        return f'Conductor: {self.conductor}, Vehículo: {self.vehiculo}, Gasolinera: {self.gasolinera}, Galones: {self.galones_combustible}, Fecha y Hora: {self.fecha_hora}, Kilometraje Actual: {self.kilometraje_actual}, Fecha de Solicitud: {self.fecha_solicitud}'
+        return f"Registro de Combustible - Conductor: {self.conductor.nombres} {self.conductor.apellidos}, Vehículo: {self.vehiculo.placa}, Fecha: {self.fecha}"

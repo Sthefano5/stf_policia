@@ -37,6 +37,11 @@ urlpatterns = [
     ##path('solicitud/', views.solicitud, name='solicitud'),
    ##path('solicitud/', views.solicitud_movilizacion, name='solicitud'),
    path('solicitud/', views.solicitud_movilizacion, name='solicitud_movilizacion'),
+   path('registrar_combustible/', views.registrar_combustible, name='registrar_combustible'),
+
+
+
+
 
 
 

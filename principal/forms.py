@@ -3,6 +3,8 @@ from django import forms
 from .models import personaModel  # Asumiendo que tienes un modelo llamado Persona
 # Asumiendo que tienes un modelo llamado Persona
 from .models import *
+from datetime import datetime
+
 
 class loginForm(forms.Form):
     usuario = forms.CharField()
@@ -77,8 +79,13 @@ class SolicitudMovilizacionForm(forms.ModelForm):
     
 #por si sale mal 
 
-class ConsumoCombustibleForm(forms.ModelForm):
+class RegistroCombustibleForm(forms.ModelForm):
     class Meta:
-        model = ConsumoCombustible
-        fields = ['conductor', 'vehiculo', 'gasolinera', 'galones_combustible', 'fecha_hora', 'kilometraje_actual', 'fecha_solicitud']
-        
+        model = RegistroCombustible
+        fields = ['conductor', 'vehiculo', 'solicitante', 'gasolinera', 'galones_combustible', 'fecha', 'hora', 'kilometraje_actual', 'fecha_solicitud']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["fecha"].widget = forms.DateInput(attrs={'type': 'date'})
+        self.fields["hora"].widget = forms.TextInput(attrs={'placeholder': 'HH:MM'})
+        self.fields["fecha_solicitud"].widget = forms.DateInput(attrs={'type': 'date'})
