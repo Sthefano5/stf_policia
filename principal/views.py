@@ -283,3 +283,17 @@ def registrar_combustible(request):
     
     registros_combustible = RegistroCombustible.objects.all()
     return render(request, 'combustible.html', {'form': form, 'registros_combustible': registros_combustible})
+
+##vcista de la pistola ##
+
+def pistola_view(request):
+    if request.method == 'POST':
+        form = PistolaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('pistola')
+    else:
+        form = PistolaForm()
+    pistolas = Pistola.objects.all()
+    return render(request, 'pistola.html', {'form': form, 'pistolas': pistolas})
+

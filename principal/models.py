@@ -144,3 +144,15 @@ class RegistroCombustible(models.Model):
 
     def __str__(self):
         return f"Registro de Combustible - Conductor: {self.conductor.nombres} {self.conductor.apellidos}, Vehículo: {self.vehiculo.placa}, Fecha: {self.fecha}"
+
+
+#a morir si no sale #
+class Pistola(models.Model):
+    dependencia_rastriillo = models.ForeignKey(dependencia, on_delete=models.CASCADE)
+    tipo_arma = models.CharField(max_length=100)
+    nombre_arma = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    codigo = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombre_arma

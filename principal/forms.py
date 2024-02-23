@@ -89,3 +89,8 @@ class RegistroCombustibleForm(forms.ModelForm):
         self.fields["fecha"].widget = forms.DateInput(attrs={'type': 'date'})
         self.fields["hora"].widget = forms.TextInput(attrs={'placeholder': 'HH:MM'})
         self.fields["fecha_solicitud"].widget = forms.DateInput(attrs={'type': 'date'})
+
+class PistolaForm(forms.ModelForm):
+    class Meta:
+        model = Pistola
+        fields = ['dependencia_rastriillo', 'tipo_arma', 'nombre_arma', 'descripcion', 'codigo']

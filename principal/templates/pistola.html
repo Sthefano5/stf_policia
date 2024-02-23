@@ -1,0 +1,46 @@
+<!-- pistola.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar y Visualizar Pistolas</title>
+</head>
+<body>
+    <h1>Ingresar Pistola</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Pistolas Registradas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Dependencia Rastriillo</th>
+                <th>Tipo de Arma</th>
+                <th>Nombre del Arma</th>
+                <th>Descripción</th>
+                <th>Código</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pistola in pistolas %}
+            <tr>
+                <td>{{ pistola.dependencia_rastriillo }}</td>
+                <td>{{ pistola.tipo_arma }}</td>
+                <td>{{ pistola.nombre_arma }}</td>
+                <td>{{ pistola.descripcion }}</td>
+                <td>{{ pistola.codigo }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No hay pistolas registradas.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
