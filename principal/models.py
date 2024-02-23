@@ -156,3 +156,20 @@ class Pistola(models.Model):
 
     def __str__(self):
         return self.nombre_arma
+    
+#perchero#
+
+class Perchero(models.Model):
+    
+        cedula_personal = models.ForeignKey(personaModel, on_delete=models.CASCADE)
+        nombre_personal = models.CharField(max_length=100)
+        apellido_personal = models.CharField(max_length=100)
+        rango_personal = models.CharField(max_length=100)
+        distrito = models.CharField(max_length=100)
+        tipo_arma_asignada = models.ForeignKey(Pistola, on_delete=models.CASCADE)
+        fecha = models.DateField()
+        hora = models.CharField(max_length=8)
+
+        def __str__(self):
+            return f"{self.nombre_personal} {self.apellido_personal}"
+

@@ -1,0 +1,51 @@
+{% extends "./base.html" %} 
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h1>Ingresar Datos del Perchero</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h2>Resultados:</h2>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Cédula Personal</th>
+                        <th>Nombre Personal</th>
+                        <th>Apellido Personal</th>
+                        <th>Rango Personal</th>
+                        <th>Distrito</th>
+                        <th>Tipo de Arma Asignada</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for perchero in percheros %}
+                    <tr>
+                        <td>{{ perchero.cedula_personal }}</td>
+                        <td>{{ perchero.nombre_personal }}</td>
+                        <td>{{ perchero.apellido_personal }}</td>
+                        <td>{{ perchero.rango_personal }}</td>
+                        <td>{{ perchero.distrito }}</td>
+                        <td>{{ perchero.tipo_arma_asignada }}</td>
+                        <td>{{ perchero.fecha }}</td>
+                        <td>{{ perchero.hora }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8">No hay percheros registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'descargar_resultados' %}?cedula={{ resultados.0.cedula }}" class="btn btn-danger">Descargar resultados</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

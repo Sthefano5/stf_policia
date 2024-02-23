@@ -94,3 +94,12 @@ class PistolaForm(forms.ModelForm):
     class Meta:
         model = Pistola
         fields = ['dependencia_rastriillo', 'tipo_arma', 'nombre_arma', 'descripcion', 'codigo']
+        
+class PercheroForm(forms.ModelForm):
+    class Meta:
+        model = Perchero
+        fields = ['cedula_personal', 'nombre_personal', 'apellido_personal', 'rango_personal', 'distrito', 'tipo_arma_asignada', 'fecha', 'hora']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["fecha"].widget = forms.DateInput(attrs={'type': 'date'})

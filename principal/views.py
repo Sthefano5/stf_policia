@@ -297,3 +297,15 @@ def pistola_view(request):
     pistolas = Pistola.objects.all()
     return render(request, 'pistola.html', {'form': form, 'pistolas': pistolas})
 
+##vcista de la pistola ##
+
+def perchero_view(request):
+    if request.method == 'POST':
+        form = PercheroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('perchero')
+    else:
+        form = PercheroForm()
+    percheros = Perchero.objects.all()
+    return render(request, 'perchero.html', {'form': form, 'percheros': percheros})
