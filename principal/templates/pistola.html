@@ -2,7 +2,7 @@
 {% block body %}
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-        <h1>Ingresar Pistola</h1>
+        <h1>Ingresar Arma</h1>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
@@ -10,7 +10,7 @@
         </form>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-        <h2>Pistolas Registradas</h2>
+        <h2>Armas Registradas</h2>
         <table class="table">
             <thead>
                 <tr>

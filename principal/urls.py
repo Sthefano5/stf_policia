@@ -38,6 +38,7 @@ urlpatterns = [
    ##path('solicitud/', views.solicitud_movilizacion, name='solicitud'),
    path('solicitud/', views.solicitud_movilizacion, name='solicitud_movilizacion'),
    path('registrar_combustible/', views.registrar_combustible, name='registrar_combustible'),
+   
    path('pistola/',views.pistola_view, name='pistola'),
    path('perchero/',views.perchero_view, name='perchero'),
 
